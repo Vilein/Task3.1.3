@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
-
 import java.util.List;
 
 
@@ -21,7 +20,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/users")
     public String getAllUsers(Model model){
         List<User> allUsers = userService.getAllUsers();
         model.addAttribute("all", allUsers);
