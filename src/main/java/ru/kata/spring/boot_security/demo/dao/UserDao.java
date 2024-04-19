@@ -10,4 +10,5 @@ public interface UserDao {
     User update(User user);
     List<User> getAllUsers();
     User getUserById(Long id);
+    User getUserByUsername(String username);
 }

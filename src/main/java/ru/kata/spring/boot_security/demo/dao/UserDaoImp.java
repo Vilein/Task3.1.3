@@ -31,4 +31,9 @@ public class UserDaoImp implements UserDao{
     public User getUserById(Long id) {
         return manager.find(User.class, id);
     }
+    @Override
+    public User getUserByUsername(String username) {
+        return manager.find(User.class, username);
+    }
+
 }

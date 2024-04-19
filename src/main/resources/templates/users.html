@@ -12,6 +12,8 @@
         <tr>
             <th>Name</th>
             <th>Lastname</th>
+            <th>Username</th>
+            <th>Password</th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +21,8 @@
             <tr>
                 <td th:text="${usr.name}">Name</td>
                 <td th:text="${usr.lastName}">Lastname</td>
+                <td th:text="${usr.userName}">Username</td>
+                <td th:text="${usr.password}">Password</td>
                 <td class="tg-action">
                     <div>
                         <a class="button" th:href="@{/deleteUser(userID=${usr.id})}">Delete</a>

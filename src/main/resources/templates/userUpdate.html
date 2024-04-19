@@ -23,6 +23,18 @@
                 </label></td>
             </tr>
             <tr>
+                <td>Username:</td>
+                <td><label>
+                    <input type="text" th:field="*{userName}" th:value="${userAdd.username}"/>
+                </label></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><label>
+                    <input type="text" th:field="*{password}" th:value="${newUser.password}"/>
+                </label></td>
+            </tr>
+            <tr>
                 <td colspan="2"><input type="submit" value="Confirm"></td>
             </tr>
         </table>

@@ -1,17 +1,24 @@
 package ru.kata.spring.boot_security.demo.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.dao.UserDao;
 import ru.kata.spring.boot_security.demo.model.User;
+import ru.kata.spring.boot_security.demo.repositories.UserRepository;
+
 import java.util.List;
 
 @Service
 public class UserServiceImp implements UserService{
     private final UserDao userDao;
-
-    public UserServiceImp(UserDao userDao) {
+    private final UserRepository userRepository;
+@Autowired
+    public UserServiceImp(UserDao userDao, UserRepository userRepository) {
         this.userDao = userDao;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -36,5 +43,15 @@ public class UserServiceImp implements UserService{
     @Override
     public User getUserById(Long id) {
         return userDao.getUserById(id);
+    }
+
+    @Override
+    @Transactional
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        User user = userRepository.findUserByUserName(userName);
+                if(user == null){
+            new UsernameNotFoundException("такого пользователя не существует");
+        }
+        return user;
     }
 }
