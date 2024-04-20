@@ -25,12 +25,12 @@
                 <td th:text="${usr.password}">Password</td>
                 <td class="tg-action">
                     <div>
-                        <a class="button" th:href="@{/deleteUser(userID=${usr.id})}">Delete</a>
+                        <a class="button" th:href="@{/admin/deleteUser(userID=${usr.id})}">Delete</a>
                     </div>
                 </td>
                 <td class="tg-action">
                     <div>
-                        <a class="button" th:href="@{/getUserById(userID=${usr.id})}">Update</a>
+                        <a class="button" th:href="@{/admin/getUserById(userID=${usr.id})}">Update</a>
                     </div>
                 </td>
             </tr>
@@ -40,5 +40,8 @@
 </div>
 <input type="button" value="Add User"
        onclick="window.location.href = 'createUser'"/>
+<form  th:action="@{/logout}" th:method="POST">
+    <input type="submit" value="Logout"/>
+</form>
 </body>
 </html>
