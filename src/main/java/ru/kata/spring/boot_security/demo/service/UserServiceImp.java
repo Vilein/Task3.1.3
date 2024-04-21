@@ -12,10 +12,11 @@ import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 import java.util.List;
 
 @Service
-public class UserServiceImp implements UserService{
+public class UserServiceImp implements UserService {
     private final UserDao userDao;
     private final UserRepository userRepository;
-@Autowired
+
+    @Autowired
     public UserServiceImp(UserDao userDao, UserRepository userRepository) {
         this.userDao = userDao;
         this.userRepository = userRepository;
@@ -26,20 +27,24 @@ public class UserServiceImp implements UserService{
     public void add(User user) {
         userDao.add(user);
     }
+
     @Override
     @Transactional
     public void delete(Long id) {
         userDao.delete(id);
     }
+
     @Override
     @Transactional
     public User update(User user) {
         return userDao.update(user);
     }
+
     @Override
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }
+
     @Override
     public User getUserById(Long id) {
         return userDao.getUserById(id);
@@ -49,9 +54,13 @@ public class UserServiceImp implements UserService{
     @Transactional
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userRepository.findUserByUserName(userName);
-                if(user == null){
+        if (user == null) {
             new UsernameNotFoundException("такого пользователя не существует");
         }
-        return user;
+        //EAGER
+        //return user;
+        //LAZY
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+                user.getAuthorities());
     }
 }

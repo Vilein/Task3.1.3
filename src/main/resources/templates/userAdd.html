@@ -34,6 +34,16 @@
                 </label></td>
             </tr>
             <tr>
+                <td>Roles</td>
+                <td><label>
+                    <input type="checkbox" th:each="role : ${roles}"
+                           th:text="${role.name}"
+                           th:value="${role.id}"
+                           th:field="*{roles}"
+                           name="roles" id="roles">
+                </label></td>
+            </tr>
+            <tr>
                 <td colspan="2"><input type="submit" value="Confirm"></td>
             </tr>
         </table>
