@@ -25,7 +25,7 @@
                 <td th:text="${usr.password}">Password</td>
                 <td class="tg-action">
                     <div>
-                        <a class="button" th:href="@{/admin/deleteUser(userID=${usr.id})}">Delete</a>
+                        <a class="button" th:href="@{/admin/getUserByIdForDelete(userID=${usr.id})}">Delete</a>
                     </div>
                 </td>
                 <td class="tg-action">

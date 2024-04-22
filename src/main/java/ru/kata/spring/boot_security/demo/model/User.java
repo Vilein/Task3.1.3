@@ -27,6 +27,22 @@ public class User implements UserDetails {
     public User() {}
 
 
+//    public User(String name, String lastName, String userName, String password, Collection<Role> roles) {
+//        this.name = name;
+//        this.lastName = lastName;
+//        this.userName = userName;
+//        this.password = password;
+//        this.roles = roles;
+//    }
+
+    public User(String name, String lastName, String username, String password, Collection<? extends GrantedAuthority> authorities) {
+        this.name = name;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
+        this.roles = (Collection<Role>)authorities;
+    }
+
     public Long getId() {
         return (Long) id;
     }

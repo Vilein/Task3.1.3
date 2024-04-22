@@ -7,37 +7,29 @@
 <body>
 <div class="center">
     <h2>Enter the data:</h2>
-    <form th:action="@{/admin/updateUser}" th:method="PUT" th:object="${newUser}">
+    <form th:action="@{/admin/deleteUser}" th:method="DELETE" th:object="${newUser}">
         <input type="hidden" th:field="*{id}" th:value="*{getId()}">
         <table class="table">
             <tr>
                 <td>Name:</td>
-                <td><label>
-                    <input type="text" th:field="*{name}" th:value="${newUser.name}"/>
-                </label></td>
+                <td th:text="${newUser.name}">Name</td>
             </tr>
             <tr>
                 <td>Lastname:</td>
-                <td><label>
-                    <input type="text" th:field="*{lastName}" th:value="${newUser.lastName}"/>
-                </label></td>
+                    <td th:text="${newUser.lastName}">Lastname</td>
             </tr>
             <tr>
                 <td>Username:</td>
-                <td><label>
-                    <input type="text" th:field="*{userName}" th:value="${newUser.userName}"/>
-                </label></td>
+                <td th:text="${newUser.username}">Lastname</td>
             </tr>
             <tr>
                 <td>Password:</td>
-                <td><label>
-                    <input type="text" th:field="*{password}" th:value="${newUser.password}"/>
-                </label></td>
+                <td th:text="${newUser.password}">Lastname</td>
             </tr>
             <tr>
                 <td>Roles</td>
                 <td><label>
-                    <input type="checkbox" th:each="role : ${roles}"
+                    <input type="checkbox" disabled th:each="role : ${roles}"
                            th:text="${role.name}"
                            th:value="${role.id}"
                            th:field="*{roles}"
@@ -45,7 +37,7 @@
                 </label></td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" value="Confirm"></td>
+                <td colspan="2"><input type="submit" value="DELETE"></td>
             </tr>
         </table>
     </form>
